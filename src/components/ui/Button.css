@@ -1,0 +1,51 @@
+/* Button component styles */
+.btn {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Variants */
+.btn--primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn--primary:hover {
+    background-color: #2980b9;
+}
+
+.btn--secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn--secondary:hover {
+    background-color: #7f8c8d;
+}
+
+/* Sizes */
+.btn--small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn--medium {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+.btn--large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
