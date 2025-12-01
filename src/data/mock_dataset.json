@@ -1,0 +1,193 @@
+{
+  "trend": {
+    "time_in_bed": {
+      "1": {
+        "resident_id": 1,
+        "baseline_hours": 8.0,
+        "last_7_days_hours": 7.3,
+        "difference_hours": -0.7,
+        "description": "Slight decrease in time in bed over the last week compared to baseline. Monitor for signs of restlessness or activity changes."
+      }
+    },
+    "low_activity": {
+      "1": {
+        "resident_id": 1,
+        "baseline_hours": 5.5,
+        "last_7_days_hours": 4.9,
+        "difference_hours": -0.6,
+        "description": "Lower daytime activity compared to baseline; could reflect reduced mobility or fatigue."
+      }
+    },
+    "high_activity": {
+      "1": {
+        "resident_id": 1,
+        "baseline_hours": 2.0,
+        "last_7_days_hours": 2.4,
+        "difference_hours": 0.4,
+        "description": "Slightly increased high-activity periods this week."
+      }
+    },
+    "at_rest": {
+      "1": {
+        "resident_id": 1,
+        "baseline_hours": 16.0,
+        "last_7_days_hours": 16.3,
+        "difference_hours": 0.3,
+        "description": "At-rest time remains near baseline."
+      }
+    },
+    "out_of_bed_night": {
+      "1": {
+        "resident_id": 1,
+        "baseline_hours": 0.7,
+        "last_7_days_hours": 1.4,
+        "difference_hours": 0.7,
+        "description": "More out-of-bed events at night this week compared to baseline."
+      }
+    },
+    "out_of_bed_day": {
+      "1": {
+        "resident_id": 1,
+        "baseline_hours": 0.3,
+        "last_7_days_hours": 0.2,
+        "difference_hours": -0.1,
+        "description": "Daytime out-of-bed events are within expected range."
+      }
+    }
+  },
+
+  "changepoints": {
+    "time_in_bed": {
+      "1": {
+        "resident_id": 1,
+        "n_change_points": 2,
+        "change_point_dates": [
+          "2025-11-02T08:00:00Z",
+          "2025-11-20T08:00:00Z"
+        ],
+        "change_point_values": [7.0, 9.5],
+        "change_point_indices": [12, 36],
+        "description": "Detected two meaningful shifts in time-in-bed patterns in November."
+      }
+    },
+    "low_activity": {
+      "1": {
+        "resident_id": 1,
+        "n_change_points": 1,
+        "change_point_dates": [
+          "2025-11-15T12:00:00Z"
+        ],
+        "change_point_values": [4.2],
+        "change_point_indices": [28],
+        "description": "A drop in daytime activity starting mid-November."
+      }
+    },
+    "high_activity": {
+      "1": {
+        "resident_id": 1,
+        "n_change_points": 0,
+        "change_point_dates": [],
+        "change_point_values": [],
+        "change_point_indices": [],
+        "description": "No significant high-activity changepoints detected."
+      }
+    },
+    "at_rest": {
+      "1": {
+        "resident_id": 1,
+        "n_change_points": 1,
+        "change_point_dates": ["2025-11-10T06:00:00Z"],
+        "change_point_values": [15.2],
+        "change_point_indices": [20],
+        "description": "Slight increase in at-rest time starting early November."
+      }
+    },
+    "out_of_bed_night": {
+      "1": {
+        "resident_id": 1,
+        "n_change_points": 1,
+        "change_point_dates": ["2025-11-18T23:30:00Z"],
+        "change_point_values": [1.8],
+        "change_point_indices": [34],
+        "description": "Night-time out-of-bed events increased around mid-November."
+      }
+    },
+    "out_of_bed_day": {
+      "1": {
+        "resident_id": 1,
+        "n_change_points": 0,
+        "change_point_dates": [],
+        "change_point_values": [],
+        "change_point_indices": [],
+        "description": "No daytime out-of-bed changepoints detected."
+      }
+    }
+  },
+
+  "anomalies": {
+    "time_in_bed": {
+      "1": {
+        "resident_id": 1,
+        "n_anomalies": 3,
+        "anomaly_dates": [
+          "2025-11-05T00:00:00Z",
+          "2025-11-12T00:00:00Z",
+          "2025-11-27T00:00:00Z"
+        ],
+        "anomaly_values": ["12h", "22.5h", "9.5h"],
+        "anomaly_indices": [5, 16, 45],
+        "description": "A few outlier nights — one very short and one very long night in November."
+      }
+    },
+    "low_activity": {
+      "1": {
+        "resident_id": 1,
+        "n_anomalies": 2,
+        "anomaly_dates": ["2025-11-07T00:00:00Z", "2025-11-22T00:00:00Z"],
+        "anomaly_values": ["2h", "8h"],
+        "anomaly_indices": [8, 40],
+        "description": "Unusually low and unusually high low-activity events detected."
+      }
+    },
+    "high_activity": {
+      "1": {
+        "resident_id": 1,
+        "n_anomalies": 1,
+        "anomaly_dates": ["2025-11-18T00:00:00Z"],
+        "anomaly_values": ["6h"],
+        "anomaly_indices": [34],
+        "description": "One day with unexpectedly high activity."
+      }
+    },
+    "at_rest": {
+      "1": {
+        "resident_id": 1,
+        "n_anomalies": 0,
+        "anomaly_dates": [],
+        "anomaly_values": [],
+        "anomaly_indices": [],
+        "description": "No notable at-rest anomalies."
+      }
+    },
+    "out_of_bed_night": {
+      "1": {
+        "resident_id": 1,
+        "n_anomalies": 2,
+        "anomaly_dates": ["2025-11-20T02:10:00Z", "2025-11-21T03:45:00Z"],
+        "anomaly_values": ["3", "4"],
+        "anomaly_indices": [36, 37],
+        "description": "A couple of unexpected night-time out-of-bed spikes."
+      }
+    },
+    "out_of_bed_day": {
+      "1": {
+        "resident_id": 1,
+        "n_anomalies": 0,
+        "anomaly_dates": [],
+        "anomaly_values": [],
+        "anomaly_indices": [],
+        "description": "No daytime out-of-bed anomalies."
+      }
+    }
+  }
+}
