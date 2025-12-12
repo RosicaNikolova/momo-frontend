@@ -1,0 +1,40 @@
+.metrics-tabs {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-left: -1rem;
+  margin-right: -3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.metrics-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.metric-tab {
+  padding: 0.5rem 1.2rem;
+  border-radius: 2rem;
+  border: 2px solid #d16edd;
+  background: white;
+  color: #d16edd;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  outline: none;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.metric-tab:hover,
+.metric-tab.active {
+  background: #d16edd;
+  color: white;
+  border-color: #d16edd;
+  outline: none;
+}

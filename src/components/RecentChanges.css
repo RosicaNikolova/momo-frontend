@@ -1,0 +1,48 @@
+.recent-card {
+  background: white;
+  border-radius: 1.2rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+}
+
+.recent-title {
+  color: #b84ecb;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+.recent-grid {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.2rem;
+}
+
+.recent-item h4 {
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+/* You can replace this with actual circular dial components later */
+.dial-black,
+.dial-purple {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  display: inline-block;
+}
+
+.dial-black {
+  color: black;
+}
+
+.dial-purple {
+  color: #d16edd;
+}
+
+.diff-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: black;
+}

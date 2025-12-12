@@ -6,17 +6,18 @@ import AnomaliesDisplay from '../components/AnomaliesDisplay'
 import '../styles/pages.css'
 
 function HomePage() {
-
     return (
-        <div className="page">
+        <>
             <Navigation />
 
-            <main className="page__content">
-                <TrendDisplay />
-                <ChangepointsDisplay />
-                <AnomaliesDisplay />
-            </main>
-        </div>
+            <div className="page">
+                <main className="page__content">
+                    <TrendDisplay />
+                    <ChangepointsDisplay />
+                    <AnomaliesDisplay />
+                </main>
+            </div>
+        </>
     )
 }
 

@@ -1,0 +1,50 @@
+.timeline-card {
+  background: white;
+  border-radius: 1.2rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.timeline-title {
+  color: #b84ecb;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+.timeline {
+  border-left: 3px solid #d16edd;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid white;
+  outline: 3px solid #d16edd;
+}
+
+.timeline-dot.shift {
+  background: #d16edd;
+}
+
+.timeline-dot.event {
+  background: black;
+}
+
+.timeline-content {
+  font-size: 1rem;
+}
+
+.timeline-content strong {
+  color: #333;
+}
