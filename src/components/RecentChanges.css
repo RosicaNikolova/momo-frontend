@@ -1,0 +1,98 @@
+.recent-card {
+  background: white;
+  border-radius: 1.2rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.recent-title {
+  color: #b84ecb;
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.recent-grid {
+  display: flex;
+  justify-content: center;
+  gap: 15rem;
+  margin-bottom: 1.5rem;
+}
+
+.recent-item h4 {
+  margin-bottom: 0.4rem;
+  color: #333;
+  font-size: 1.05rem;
+}
+
+/* You can replace this with actual circular dial components later */
+.dial-black,
+.dial-purple {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  position: relative;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.dial-black {
+  color: #111;
+}
+
+.dial-purple {
+  color: #b84ecb;
+}
+
+/* SVG ring */
+.dial-ring {
+  position: absolute;
+  inset: 0;
+}
+
+.dial-track {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 12;
+}
+
+.dial-progress {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.dial-black {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.dial-purple {
+  color: #b84ecb;
+}
+
+.dial-text {
+  position: relative;
+  z-index: 1;
+}
+
+.diff-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: black;
+}
+
+.diff-value.up {
+  color: #0f9d58;
+}
+
+.diff-value.down {
+  color: #d16edd;
+}

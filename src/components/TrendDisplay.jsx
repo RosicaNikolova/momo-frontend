@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTrendData } from '../services/trendService.js';
+import { getTrendData } from '../services/fallbackService.js';
 import { METRIC_TYPES } from '../utils/api.js';
 import { METRIC_DISPLAY_NAMES } from '../types/api.js';
 import './TrendDisplay.css';

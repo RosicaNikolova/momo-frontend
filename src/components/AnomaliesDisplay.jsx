@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAnomaliesData } from '../services/anomaliesService.js';
+import { getAnomaliesData } from '../services/fallbackService.js';
 import { METRIC_TYPES } from '../utils/api.js';
 import { METRIC_DISPLAY_NAMES } from '../types/api.js';
 import './AnomaliesDisplay.css';

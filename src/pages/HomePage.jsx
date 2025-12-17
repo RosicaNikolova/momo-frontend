@@ -1,25 +1,23 @@
 // HomePage.jsx - A page component
-import Header from '../components/Header'
+import Navigation from '../components/Navigation'
 import TrendDisplay from '../components/TrendDisplay'
 import ChangepointsDisplay from '../components/ChangepointsDisplay'
 import AnomaliesDisplay from '../components/AnomaliesDisplay'
 import '../styles/pages.css'
 
 function HomePage() {
-
     return (
-        <div className="page">
-            <Header
-                title="Momo Medical Insights App"
-                subtitle="Your healthcare companion"
-            />
+        <>
+            <Navigation />
 
-            <main className="page__content">
-                <TrendDisplay />
-                <ChangepointsDisplay />
-                <AnomaliesDisplay />
-            </main>
-        </div>
+            <div className="page">
+                <main className="page__content">
+                    <TrendDisplay />
+                    <ChangepointsDisplay />
+                    <AnomaliesDisplay />
+                </main>
+            </div>
+        </>
     )
 }
 
