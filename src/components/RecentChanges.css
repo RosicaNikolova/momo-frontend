@@ -46,3 +46,11 @@
   font-weight: bold;
   color: black;
 }
+
+.diff-value.up {
+  color: #0f9d58;
+}
+
+.diff-value.down {
+  color: #d16edd;
+}

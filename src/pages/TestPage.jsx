@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation";
 import MetricsTabs from "../components/MetricsTabs";
 import RecentChanges from "../components/RecentChanges";
 import Patterns from "../components/Patterns";
-import { getTrendData, getChangepointsData, getAnomaliesData } from "../services/localMockService.js";
+import { getTrendData, getChangepointsData, getAnomaliesData } from "../services/fallbackService.js";
 import '../styles/pages.css'
 
 export default function TestPage() {
@@ -20,9 +20,10 @@ export default function TestPage() {
         const metricMap = {
           "timeInBed": "time_in_bed",
           "highActivity": "high_activity",
-          "lowActivity": "low_activity"
+          "lowActivity": "low_activity",
+          "atRest": "at_rest"
         };
-        
+
         const apiMetric = metricMap[metric] || metric;
         const residentId = 1;
 
@@ -42,7 +43,8 @@ export default function TestPage() {
           changepoints.change_point_dates.forEach((date, index) => {
             timeline.push({
               type: "shift",
-              date: new Date(date).toISOString().split('T')[0]
+              date,
+              value: changepoints.change_point_values?.[index] || ""
             });
           });
         }
@@ -52,8 +54,8 @@ export default function TestPage() {
           anomalies.anomaly_dates.forEach((date, index) => {
             timeline.push({
               type: "event",
-              date: new Date(date).toISOString().split('T')[0],
-              duration: anomalies.anomaly_values?.[index] || "Unknown"
+              date,
+              value: anomalies.anomaly_values?.[index] || ""
             });
           });
         }
@@ -73,14 +75,6 @@ export default function TestPage() {
     loadData();
   }, [metric]);
 
-  // Convert hours to hours and minutes format
-  const formatHours = (hours) => {
-    if (!hours && hours !== 0) return "N/A";
-    const h = Math.floor(hours);
-    const m = Math.round((hours - h) * 60);
-    return `${h}h ${m}m`;
-  };
-
   return (
     <>
       <Navigation />
@@ -93,12 +87,13 @@ export default function TestPage() {
         ) : trendData ? (
           <>
             <RecentChanges
-              baseline={formatHours(trendData.baseline_hours)}
-              lastWeek={formatHours(trendData.last_7_days_hours)}
-              difference={formatHours(Math.abs(trendData.difference_hours))}
+              baseline={trendData.baseline_hours}
+              lastWeek={trendData.last_7_days_hours}
+              difference={trendData.difference_hours}
+              description={trendData.description}
             />
 
-            <Patterns events={timelineData} />
+            <Patterns events={timelineData} baseline={trendData.baseline_hours} />
           </>
         ) : (
           <p>No data available</p>
