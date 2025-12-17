@@ -10,7 +10,7 @@ function HomePage() {
     return (
         <div className="page">
             <Header
-                title="Momo Medical Platform"
+                title="Momo Medical Insights App"
                 subtitle="Your healthcare companion"
             />
 
