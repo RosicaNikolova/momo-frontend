@@ -1,6 +1,42 @@
 import "./RecentChanges.css";
 
 export default function RecentChanges({ baseline, lastWeek, difference, description }) {
+  const toHours = (value) => {
+    if (!value) return 0;
+    const match = String(value).match(/(\d+)\s*h\s*(\d+)?/i);
+    if (!match) return 0;
+    const h = parseInt(match[1], 10) || 0;
+    const m = parseInt(match[2] || '0', 10) || 0;
+    return h + m / 60;
+  };
+
+  const Dial = ({ value, variant }) => {
+    const hours = toHours(value);
+    const frac = Math.max(0, Math.min(1, hours / 24));
+    const r = 44; // radius
+    const C = 2 * Math.PI * r; // circumference
+    const dash = `${(C * frac).toFixed(2)} ${C.toFixed(2)}`;
+    const stroke = variant === 'black' ? 'rgba(0,0,0,0.65)' : '#b84ecb';
+    return (
+      <div className={`dial-${variant}`}>
+        <svg className="dial-ring" viewBox="0 0 100 100" aria-hidden="true">
+          <circle className="dial-track" cx="50" cy="50" r={r} />
+          <circle
+            className="dial-progress"
+            cx="50"
+            cy="50"
+            r={r}
+            stroke={stroke}
+            strokeDasharray={dash}
+            strokeDashoffset="0"
+            transform="rotate(-90 50 50)"
+          />
+        </svg>
+        <span className="dial-text">{value}</span>
+      </div>
+    );
+  };
+
   const trendText = (description || '').toLowerCase();
   const isDecrease = trendText.includes('decreas');
   const isIncrease = trendText.includes('increas');
@@ -41,12 +77,12 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
 
           <div className="recent-item">
             <h4>Baseline</h4>
-            <div className="dial-black">{baseline}</div>
+            <Dial value={baseline} variant="black" />
           </div>
 
           <div className="recent-item">
             <h4>Last week</h4>
-            <div className="dial-purple">{lastWeek}</div>
+            <Dial value={lastWeek} variant="purple" />
           </div>
 
         </div>
