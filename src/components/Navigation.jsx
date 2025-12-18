@@ -6,7 +6,7 @@ export default function Navigation() {
 
   return (
     <nav className="nav">
-      <h1 className="nav__logo">Momo Insights</h1>
+      <h1 className="nav__logo">Momo Insights App</h1>
 
       {/* Mobile Menu Button */}
       <button className="nav__toggle" onClick={() => setOpen(!open)}>

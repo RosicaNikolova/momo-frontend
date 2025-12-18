@@ -78,6 +78,7 @@ export default function TestPage() {
   return (
     <>
       <Navigation />
+      <h3 className="page__room">Room 101</h3>
 
       <div className="page">
         <MetricsTabs selected={metric} onChange={setMetric} />
