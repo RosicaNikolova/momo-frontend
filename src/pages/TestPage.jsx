@@ -27,13 +27,15 @@ export default function TestPage() {
         const apiMetric = metricMap[metric] || metric;
         const residentId = 1;
 
-        // Fetch trend data
-        const trend = await getTrendData(apiMetric, residentId);
-        setTrendData(trend);
+        // Fetch all data in parallel (with fallback to mock)
+        const [trend, changepoints, anomalies] = await Promise.all([
+          getTrendData(apiMetric, residentId),
+          getChangepointsData(apiMetric, residentId),
+          getAnomaliesData(apiMetric, residentId)
+        ]);
 
-        // Fetch changepoints and anomalies to build timeline
-        const changepoints = await getChangepointsData(apiMetric, residentId);
-        const anomalies = await getAnomaliesData(apiMetric, residentId);
+        console.log('Trend data received:', trend);
+        setTrendData(trend);
 
         // Build timeline from changepoints and anomalies
         const timeline = [];
@@ -65,7 +67,9 @@ export default function TestPage() {
 
         setTimelineData(timeline);
       } catch (error) {
-        console.error("Error loading data:", error);
+        console.error("Error loading data - showing mock data:", error);
+        // Even if there's an error, the fallbackService should have provided mock data
+        // If we get here, something went very wrong, so just keep current state
         setTimelineData([]);
       } finally {
         setLoading(false);
@@ -78,6 +82,7 @@ export default function TestPage() {
   return (
     <>
       <Navigation />
+      <h3 className="page__room">Room 101</h3>
 
       <div className="page">
         <MetricsTabs selected={metric} onChange={setMetric} />
