@@ -17,8 +17,10 @@
 .recent-grid {
   display: flex;
   justify-content: center;
-  gap: 15rem;
+  gap: 4rem;
   margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .recent-item h4 {
@@ -30,16 +32,16 @@
 /* You can replace this with actual circular dial components later */
 .dial-black,
 .dial-purple {
-  width: 140px;
-  height: 140px;
+  width: clamp(80px, 24vw, 140px);
+  height: clamp(80px, 24vw, 140px);
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: clamp(0.9rem, 2.2vw, 1.25rem);
   font-weight: 700;
   position: relative;
-  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
   background: #fff;
 }
 
@@ -55,6 +57,8 @@
 .dial-ring {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .dial-track {
@@ -81,6 +85,40 @@
 .dial-text {
   position: relative;
   z-index: 1;
+}
+
+/* Mobile / small screens: keep dials side-by-side, allow horizontal scroll if needed */
+@media (max-width: 600px) {
+  .recent-grid {
+    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+  }
+
+  .recent-item {
+    flex: 0 0 auto;
+    text-align: center;
+    min-width: 110px;
+  }
+
+  .recent-item h4 {
+    margin-bottom: 0.4rem;
+  }
+
+  .dial-black,
+  .dial-purple {
+    width: clamp(72px, 28vw, 120px);
+    height: clamp(72px, 28vw, 120px);
+  }
+
+  .recent-diff {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
 }
 
 .diff-value {
