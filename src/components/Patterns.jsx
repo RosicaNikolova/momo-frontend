@@ -1,12 +1,11 @@
 import "./Patterns.css";
 
 export default function Patterns({ events, baseline }) {
-  // Convert time string format "XhYmin" or "X.Xh" to hours (numeric)
   const timeToHours = (timeStr) => {
     if (!timeStr) return 0;
     if (typeof timeStr !== 'string') return 0;
 
-    // Try matching "Xh Ymin" format (e.g., "2h 30min")
+    
     let match = timeStr.match(/(\d+)h\s*(\d+)?min/);
     if (match) {
       const hours = parseInt(match[1]) || 0;
@@ -14,7 +13,7 @@ export default function Patterns({ events, baseline }) {
       return hours + mins / 60;
     }
 
-    // Try matching "X.Xh" format (e.g., "22.5h", "12h")
+    
     match = timeStr.match(/(\d+(?:\.\d+)?)\s*h/);
     if (match) {
       return parseFloat(match[1]) || 0;
@@ -23,7 +22,6 @@ export default function Patterns({ events, baseline }) {
     return 0;
   };
 
-  // Get color class for anomaly based on comparison to baseline
   const getAnomalyColor = (anomalyValue) => {
     const baselineHours = timeToHours(baseline);
     const anomalyHours = timeToHours(anomalyValue);
@@ -39,7 +37,7 @@ export default function Patterns({ events, baseline }) {
     const dateObj = new Date(isoDate);
     if (Number.isNaN(dateObj.getTime())) return isoDate;
     const fmt = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short" });
-    return fmt.format(dateObj); // e.g., 10 Jul
+    return fmt.format(dateObj);
   };
 
   return (

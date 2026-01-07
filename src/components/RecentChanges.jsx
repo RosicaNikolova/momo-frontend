@@ -13,8 +13,8 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
   const Dial = ({ value, variant }) => {
     const hours = toHours(value);
     const frac = Math.max(0, Math.min(1, hours / 24));
-    const r = 44; // radius
-    const C = 2 * Math.PI * r; // circumference
+    const r = 44;
+    const C = 2 * Math.PI * r;
     const dash = `${(C * frac).toFixed(2)} ${C.toFixed(2)}`;
     const stroke = variant === 'black' ? 'rgba(0,0,0,0.65)' : '#b84ecb';
     return (
@@ -43,7 +43,6 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
   const arrow = isDecrease ? '▼' : isIncrease ? '▲' : '';
   const diffClass = isDecrease ? 'down' : isIncrease ? 'up' : '';
 
-  // Keep only the text up to the last " by" and bold increase/decrease keyword
   const baseText = description
     ? (() => {
       const lower = description.toLowerCase();
