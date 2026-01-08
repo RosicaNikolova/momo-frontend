@@ -32,7 +32,6 @@ export default function TestPage() {
           getAnomaliesData(apiMetric, residentId)
         ]);
 
-        console.log('Trend data received:', trend);
         setTrendData(trend);
 
         const timeline = [];
