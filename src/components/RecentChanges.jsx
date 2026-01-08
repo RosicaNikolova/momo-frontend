@@ -17,8 +17,9 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
     const C = 2 * Math.PI * r;
     const dash = `${(C * frac).toFixed(2)} ${C.toFixed(2)}`;
     const stroke = variant === 'black' ? 'rgba(0,0,0,0.65)' : '#b84ecb';
+    const label = variant === 'black' ? 'Baseline' : 'Last week';
     return (
-      <div className={`dial-${variant}`}>
+      <div className={`dial-${variant}`} role="img" aria-label={`${label}: ${value}`}>
         <svg className="dial-ring" viewBox="0 0 100 100" aria-hidden="true">
           <circle className="dial-track" cx="50" cy="50" r={r} />
           <circle

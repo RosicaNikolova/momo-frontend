@@ -45,15 +45,20 @@ export default function Patterns({ events, baseline }) {
       <h3 className="timeline-title">Patterns & Anomalies</h3>
       <div className="timeline-card">
         {baseline && (
-          <div className="baseline-box">
+          <div className="baseline-box" aria-label={`Baseline: ${baseline}`}>
             <span className="baseline-label">Baseline:</span>
             <span className="baseline-hours">{baseline}</span>
           </div>
         )}
         <div className="timeline">
           {events.map((evt, index) => (
-            <div className="timeline-item" key={index}>
-              <div className={`timeline-dot ${evt.type}`}></div>
+            <div
+              className="timeline-item"
+              key={index}
+              role="article"
+              aria-label={`${formatDate(evt.date)} ${evt.type === 'shift' ? 'Pattern changed' : 'Anomaly'}: ${evt.value || '—'}`}
+            >
+              <div className={`timeline-dot ${evt.type}`} aria-hidden="true"></div>
 
               <div className="timeline-content">
                 {evt.type === "shift" ? (
