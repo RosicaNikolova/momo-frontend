@@ -73,7 +73,7 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
   return (
     <InfoSection 
       title="Recent changes" 
-      description="This component shows the recent changes in the metric compared to the baseline."
+      description="Compare how the resident’s patterns have changed compared to their baseline."
     >
       <div className="recent-grid">
 

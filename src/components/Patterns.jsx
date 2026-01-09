@@ -46,7 +46,7 @@ export default function Patterns({ events, baseline }) {
     <>
       <InfoSection 
         title="Patterns & Anomalies" 
-        description="This component displays patterns and anomalies in the metric data over time, helping identify significant changes and behavioral shifts."
+        description="Shows specific dates when the resident’s behavior patterns changed significantly."
       >
         {baseline && (
           <div className="baseline-box" aria-label={`Baseline: ${baseline}`}>

@@ -8,8 +8,8 @@ export default function Navigation({ room }) {
     <nav className="nav">
       <div className="nav__top">
         <h1 className="nav__logo">Momo Insights App</h1>
-
-        <button
+        
+        {/* <button
           className="nav__toggle"
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -17,7 +17,8 @@ export default function Navigation({ room }) {
           aria-controls="nav-mobile-menu"
         >
           {open ? "✖" : "☰"}
-        </button>
+        </button> */}
+
       </div>
 
       {room && <div className="nav__room">{room}</div>}
