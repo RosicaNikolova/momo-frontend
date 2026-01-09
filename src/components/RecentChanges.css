@@ -1,19 +1,3 @@
-.recent-card {
-  background: white;
-  border-radius: 1.2rem;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  margin-bottom: 2rem;
-}
-
-.recent-title {
-  color: #b84ecb;
-  margin-bottom: 0.75rem;
-  margin-top: 0;
-  text-align: left;
-  font-size: 1.1rem;
-}
-
 .recent-grid {
   display: flex;
   justify-content: center;
@@ -63,7 +47,7 @@
 
 .dial-track {
   fill: none;
-  stroke: rgba(0, 0, 0, 0.08);
+  stroke: #E8D5F2;
   stroke-width: 12;
 }
 
@@ -75,7 +59,12 @@
 }
 
 .dial-black {
-  color: rgba(0, 0, 0, 0.75);
+  color: #000000;
+  stroke: #BF8EC0;
+}
+
+.dial-black .dial-progress {
+  stroke: #BF8EC0;
 }
 
 .dial-purple {
@@ -85,6 +74,7 @@
 .dial-text {
   position: relative;
   z-index: 1;
+  color: #000000;
 }
 
 /* Mobile / small screens: keep dials side-by-side, allow horizontal scroll if needed */
@@ -115,22 +105,27 @@
     height: clamp(72px, 28vw, 120px);
   }
 
-  .recent-diff {
+.recent-diff {
     text-align: center;
     margin-top: 0.5rem;
+    color: #000000;
   }
+
+.recent-diff strong {
+  color: #000000;
+}
 }
 
 .diff-value {
   font-size: 1.3rem;
   font-weight: bold;
-  color: black;
+  color: #000000;
 }
 
 .diff-value.up {
-  color: #0f9d58;
+  color: #000000;
 }
 
 .diff-value.down {
-  color: #d16edd;
+  color: #000000;
 }

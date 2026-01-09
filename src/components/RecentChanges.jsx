@@ -1,3 +1,4 @@
+import InfoSection from "./InfoSection";
 import "./RecentChanges.css";
 
 export default function RecentChanges({ baseline, lastWeek, difference, description }) {
@@ -70,10 +71,11 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
     );
   };
   return (
-    <>
-      <h3 className="recent-title">Recent changes</h3>
-      <div className="recent-card">
-        <div className="recent-grid">
+    <InfoSection 
+      title="Recent changes" 
+      description="This component shows the recent changes in the metric compared to the baseline."
+    >
+      <div className="recent-grid">
 
           <div className="recent-item">
             <h4>Baseline</h4>
@@ -92,7 +94,6 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
           <br />
           <span className={`diff-value ${diffClass}`}>{arrow} {difference}</span>
         </p>
-      </div>
-    </>
+    </InfoSection>
   );
 }

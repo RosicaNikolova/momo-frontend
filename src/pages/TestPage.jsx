@@ -7,7 +7,7 @@ import { getTrendData, getChangepointsData, getAnomaliesData } from "../services
 import '../styles/pages.css'
 
 export default function TestPage() {
-  const [metric, setMetric] = useState("time_in_bed");
+  const [metric, setMetric] = useState("timeInBed");
   const [trendData, setTrendData] = useState(null);
   const [timelineData, setTimelineData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -71,9 +71,7 @@ export default function TestPage() {
 
   return (
     <>
-      <Navigation />
-      <h3 className="page__room">Room 101</h3>
-
+      <Navigation room="Room 101"/>
       <div className="page">
         <MetricsTabs selected={metric} onChange={setMetric} />
 

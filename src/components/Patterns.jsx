@@ -1,3 +1,5 @@
+import { useState } from "react";
+import InfoSection from "./InfoSection";
 import "./Patterns.css";
 
 export default function Patterns({ events, baseline }) {
@@ -42,8 +44,10 @@ export default function Patterns({ events, baseline }) {
 
   return (
     <>
-      <h3 className="timeline-title">Patterns & Anomalies</h3>
-      <div className="timeline-card">
+      <InfoSection 
+        title="Patterns & Anomalies" 
+        description="This component displays patterns and anomalies in the metric data over time, helping identify significant changes and behavioral shifts."
+      >
         {baseline && (
           <div className="baseline-box" aria-label={`Baseline: ${baseline}`}>
             <span className="baseline-label">Baseline:</span>
@@ -75,7 +79,7 @@ export default function Patterns({ events, baseline }) {
             </div>
           ))}
         </div>
-      </div>
+      </InfoSection>
     </>
   );
 }
