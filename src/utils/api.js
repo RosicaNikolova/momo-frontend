@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-// API configuration
 export const API_BASE_URL = 'http://127.0.0.1:8000';
 
-// Metric types available in the API
 export const METRIC_TYPES = {
     TIME_IN_BED: 'time_in_bed',
     LOW_ACTIVITY: 'low_activity',
@@ -13,16 +11,14 @@ export const METRIC_TYPES = {
     OUT_OF_BED_DAY: 'out_of_bed_day'
 };
 
-// Create axios instance with default configuration
 const apiClient = axios.create({
     baseURL: API_BASE_URL,
-    timeout: 10000, // 10 second timeout
+    timeout: 10000,
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
-// Request interceptor for logging
 apiClient.interceptors.request.use(
     (config) => {
         console.log(`Making ${config.method?.toUpperCase()} request to: ${config.url}`);
@@ -34,17 +30,12 @@ apiClient.interceptors.request.use(
     }
 );
 
-// Response interceptor for error handling
 apiClient.interceptors.response.use(
-    (response) => {
-        return response;
-    },
+    (response) => response,
     (error) => {
         if (error.response) {
-            // Server responded with error status
             console.error(`API Error ${error.response.status}:`, error.response.data);
 
-            // Handle specific error codes
             if (error.response.status === 400) {
                 throw new Error(`Invalid request: ${error.response.data?.detail || 'Bad request'}`);
             } else if (error.response.status === 404) {
@@ -55,18 +46,15 @@ apiClient.interceptors.response.use(
 
             throw new Error(`HTTP ${error.response.status}: ${error.response.data?.detail || error.message}`);
         } else if (error.request) {
-            // Network error
             console.error('Network error:', error.request);
             throw new Error('Network error. Please check your connection and try again.');
         } else {
-            // Something else happened
             console.error('Request setup error:', error.message);
             throw new Error(`Request failed: ${error.message}`);
         }
     }
 );
 
-// Helper function to make API requests
 export const apiRequest = async (endpoint, options = {}) => {
     try {
         const response = await apiClient({
@@ -81,19 +69,7 @@ export const apiRequest = async (endpoint, options = {}) => {
     }
 };
 
-// Convenience methods for different HTTP verbs
-export const apiGet = (endpoint, config = {}) => {
-    return apiRequest(endpoint, { method: 'GET', ...config });
-};
-
-export const apiPost = (endpoint, data, config = {}) => {
-    return apiRequest(endpoint, { method: 'POST', data, ...config });
-};
-
-export const apiPut = (endpoint, data, config = {}) => {
-    return apiRequest(endpoint, { method: 'PUT', data, ...config });
-};
-
-export const apiDelete = (endpoint, config = {}) => {
-    return apiRequest(endpoint, { method: 'DELETE', ...config });
-};
+export const apiGet = (endpoint, config = {}) => apiRequest(endpoint, { method: 'GET', ...config });
+export const apiPost = (endpoint, data, config = {}) => apiRequest(endpoint, { method: 'POST', data, ...config });
+export const apiPut = (endpoint, data, config = {}) => apiRequest(endpoint, { method: 'PUT', data, ...config });
+export const apiDelete = (endpoint, config = {}) => apiRequest(endpoint, { method: 'DELETE', ...config });

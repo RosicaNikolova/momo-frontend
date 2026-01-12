@@ -10,10 +10,14 @@ export default function MetricsTabs({ selected, onChange }) {
   ];
 
   return (
-    <div className="metrics-tabs">
+    <div className="metrics-tabs" role="tablist" aria-label="Metrics selection">
       {tabs.map(tab => (
         <button
           key={tab.id}
+          id={`tab-${tab.id}`}
+          role="tab"
+          aria-selected={selected === tab.id}
+          aria-pressed={selected === tab.id}
           className={`metric-tab ${selected === tab.id ? "active" : ""}`}
           onClick={() => onChange(tab.id)}
         >

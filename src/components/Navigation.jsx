@@ -1,27 +1,18 @@
 import { useState } from "react";
 import "./Navigation.css";
 
-export default function Navigation() {
+export default function Navigation({ room }) {
   const [open, setOpen] = useState(false);
 
   return (
     <nav className="nav">
-      <h1 className="nav__logo">Momo Insights App</h1>
+      <div className="nav__top">
+        <h1 className="nav__logo">Momo Insights App</h1>
 
-      {/* Mobile Menu Button */}
-      <button className="nav__toggle" onClick={() => setOpen(!open)}>
-        {open ? "✖" : "☰"}
-      </button>
+      </div>
 
-      {/* Mobile Menu */}
-      {open && (
-        <ul className="nav__menu nav__menu--mobile">
-          <li>Home</li>
-          <li>About</li>
-          <li>Services</li>
-          <li>Contact</li>
-        </ul>
-      )}
+      {room && <div className="nav__room">{room}</div>}
+
     </nav>
   );
 }

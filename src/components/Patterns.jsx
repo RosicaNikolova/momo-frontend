@@ -1,12 +1,13 @@
+import { useState } from "react";
+import InfoSection from "./InfoSection";
 import "./Patterns.css";
 
 export default function Patterns({ events, baseline }) {
-  // Convert time string format "XhYmin" or "X.Xh" to hours (numeric)
   const timeToHours = (timeStr) => {
     if (!timeStr) return 0;
     if (typeof timeStr !== 'string') return 0;
 
-    // Try matching "Xh Ymin" format (e.g., "2h 30min")
+
     let match = timeStr.match(/(\d+)h\s*(\d+)?min/);
     if (match) {
       const hours = parseInt(match[1]) || 0;
@@ -14,7 +15,7 @@ export default function Patterns({ events, baseline }) {
       return hours + mins / 60;
     }
 
-    // Try matching "X.Xh" format (e.g., "22.5h", "12h")
+
     match = timeStr.match(/(\d+(?:\.\d+)?)\s*h/);
     if (match) {
       return parseFloat(match[1]) || 0;
@@ -23,7 +24,6 @@ export default function Patterns({ events, baseline }) {
     return 0;
   };
 
-  // Get color class for anomaly based on comparison to baseline
   const getAnomalyColor = (anomalyValue) => {
     const baselineHours = timeToHours(baseline);
     const anomalyHours = timeToHours(anomalyValue);
@@ -39,23 +39,30 @@ export default function Patterns({ events, baseline }) {
     const dateObj = new Date(isoDate);
     if (Number.isNaN(dateObj.getTime())) return isoDate;
     const fmt = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short" });
-    return fmt.format(dateObj); // e.g., 10 Jul
+    return fmt.format(dateObj);
   };
 
   return (
     <>
-      <h3 className="timeline-title">Patterns & Anomalies</h3>
-      <div className="timeline-card">
+      <InfoSection
+        title="Patterns & Anomalies"
+        description="Shows specific dates when the resident’s behavior patterns changed significantly or anomalies occurred"
+      >
         {baseline && (
-          <div className="baseline-box">
+          <div className="baseline-box" aria-label={`Baseline: ${baseline}`}>
             <span className="baseline-label">Baseline:</span>
             <span className="baseline-hours">{baseline}</span>
           </div>
         )}
         <div className="timeline">
           {events.map((evt, index) => (
-            <div className="timeline-item" key={index}>
-              <div className={`timeline-dot ${evt.type}`}></div>
+            <div
+              className="timeline-item"
+              key={index}
+              role="article"
+              aria-label={`${formatDate(evt.date)} ${evt.type === 'shift' ? 'Pattern changed' : 'Anomaly'}: ${evt.value || '—'}`}
+            >
+              <div className={`timeline-dot ${evt.type}`} aria-hidden="true"></div>
 
               <div className="timeline-content">
                 {evt.type === "shift" ? (
@@ -72,7 +79,7 @@ export default function Patterns({ events, baseline }) {
             </div>
           ))}
         </div>
-      </div>
+      </InfoSection>
     </>
   );
 }

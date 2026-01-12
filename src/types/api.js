@@ -39,10 +39,8 @@
  * @property {number} status - HTTP status code
  */
 
-// Export types for usage in other files
 export const Types = {};
 
-// Metric type constants for validation
 export const VALID_METRICS = [
     'time_in_bed',
     'low_activity',
@@ -52,7 +50,6 @@ export const VALID_METRICS = [
     'out_of_bed_day'
 ];
 
-// Metric display names for UI
 export const METRIC_DISPLAY_NAMES = {
     time_in_bed: 'Time in Bed',
     low_activity: 'Low Activity',

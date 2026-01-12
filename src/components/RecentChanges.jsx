@@ -1,3 +1,4 @@
+import InfoSection from "./InfoSection";
 import "./RecentChanges.css";
 
 export default function RecentChanges({ baseline, lastWeek, difference, description }) {
@@ -13,12 +14,13 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
   const Dial = ({ value, variant }) => {
     const hours = toHours(value);
     const frac = Math.max(0, Math.min(1, hours / 24));
-    const r = 44; // radius
-    const C = 2 * Math.PI * r; // circumference
+    const r = 44;
+    const C = 2 * Math.PI * r;
     const dash = `${(C * frac).toFixed(2)} ${C.toFixed(2)}`;
     const stroke = variant === 'black' ? 'rgba(0,0,0,0.65)' : '#b84ecb';
+    const label = variant === 'black' ? 'Baseline' : 'Last week';
     return (
-      <div className={`dial-${variant}`}>
+      <div className={`dial-${variant}`} role="img" aria-label={`${label}: ${value}`}>
         <svg className="dial-ring" viewBox="0 0 100 100" aria-hidden="true">
           <circle className="dial-track" cx="50" cy="50" r={r} />
           <circle
@@ -43,7 +45,6 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
   const arrow = isDecrease ? '▼' : isIncrease ? '▲' : '';
   const diffClass = isDecrease ? 'down' : isIncrease ? 'up' : '';
 
-  // Keep only the text up to the last " by" and bold increase/decrease keyword
   const baseText = description
     ? (() => {
       const lower = description.toLowerCase();
@@ -70,29 +71,29 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
     );
   };
   return (
-    <>
-      <h3 className="recent-title">Recent changes</h3>
-      <div className="recent-card">
-        <div className="recent-grid">
+    <InfoSection
+      title="Recent changes"
+      description="Compare the resident's baseline with the last week's data."
+    >
+      <div className="recent-grid">
 
-          <div className="recent-item">
-            <h4>Baseline</h4>
-            <Dial value={baseline} variant="black" />
-          </div>
-
-          <div className="recent-item">
-            <h4>Last week</h4>
-            <Dial value={lastWeek} variant="purple" />
-          </div>
-
+        <div className="recent-item">
+          <h4>Baseline</h4>
+          <Dial value={baseline} variant="black" />
         </div>
 
-        <p className="recent-diff">
-          {emphasize(capitalizedText)}
-          <br />
-          <span className={`diff-value ${diffClass}`}>{arrow} {difference}</span>
-        </p>
+        <div className="recent-item">
+          <h4>Last week</h4>
+          <Dial value={lastWeek} variant="purple" />
+        </div>
+
       </div>
-    </>
+
+      <p className="recent-diff">
+        {emphasize(capitalizedText)}
+        <br />
+        <span className={`diff-value ${diffClass}`}>{arrow} {difference}</span>
+      </p>
+    </InfoSection>
   );
 }
