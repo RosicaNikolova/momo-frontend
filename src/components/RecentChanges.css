@@ -90,9 +90,41 @@
 }
 
 .diff-value.up {
-  color: #0f9d58;
+  color: #ff8c42;
 }
 
 .diff-value.down {
-  color: #d16edd;
+  color: #08B4DA;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .recent-card {
+    padding: 1rem;
+  }
+
+  .recent-grid {
+    gap: 3rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .recent-item h4 {
+    font-size: 0.95rem;
+  }
+
+  .dial-black,
+  .dial-purple {
+    width: 120px;
+    height: 120px;
+    font-size: 1.1rem;
+  }
+
+  .recent-diff {
+    font-size: 0.9rem;
+  }
+
+  .diff-value {
+    font-size: 1.1rem;
+  }
 }
