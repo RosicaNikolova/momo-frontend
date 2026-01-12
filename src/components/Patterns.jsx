@@ -7,7 +7,7 @@ export default function Patterns({ events, baseline }) {
     if (!timeStr) return 0;
     if (typeof timeStr !== 'string') return 0;
 
-    
+
     let match = timeStr.match(/(\d+)h\s*(\d+)?min/);
     if (match) {
       const hours = parseInt(match[1]) || 0;
@@ -15,7 +15,7 @@ export default function Patterns({ events, baseline }) {
       return hours + mins / 60;
     }
 
-    
+
     match = timeStr.match(/(\d+(?:\.\d+)?)\s*h/);
     if (match) {
       return parseFloat(match[1]) || 0;
@@ -44,9 +44,9 @@ export default function Patterns({ events, baseline }) {
 
   return (
     <>
-      <InfoSection 
-        title="Patterns & Anomalies" 
-        description="Shows specific dates when the resident’s behavior patterns changed significantly."
+      <InfoSection
+        title="Patterns & Anomalies"
+        description="Shows specific dates when the resident’s behavior patterns changed significantly or anomalies occurred"
       >
         {baseline && (
           <div className="baseline-box" aria-label={`Baseline: ${baseline}`}>

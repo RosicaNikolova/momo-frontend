@@ -10,7 +10,7 @@ function App() {
       <Sidebar />
 
       <Routes>
-        {/* <Route path="/" element={<Navigate to="/overview" replace />} /> */}
+        <Route path="/" element={<Navigate to="/resident/1" replace />} />
         {/* <Route path="/overview" element={<TestPage />} /> */}
         <Route path="/resident/:residentId" element={<ResidentDetailPage />} />
       </Routes>

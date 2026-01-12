@@ -71,29 +71,29 @@ export default function RecentChanges({ baseline, lastWeek, difference, descript
     );
   };
   return (
-    <InfoSection 
-      title="Recent changes" 
-      description="Compare how the resident’s patterns have changed compared to their baseline."
+    <InfoSection
+      title="Recent changes"
+      description="Compare the resident's baseline with the last week's data."
     >
       <div className="recent-grid">
 
-          <div className="recent-item">
-            <h4>Baseline</h4>
-            <Dial value={baseline} variant="black" />
-          </div>
-
-          <div className="recent-item">
-            <h4>Last week</h4>
-            <Dial value={lastWeek} variant="purple" />
-          </div>
-
+        <div className="recent-item">
+          <h4>Baseline</h4>
+          <Dial value={baseline} variant="black" />
         </div>
 
-        <p className="recent-diff">
-          {emphasize(capitalizedText)}
-          <br />
-          <span className={`diff-value ${diffClass}`}>{arrow} {difference}</span>
-        </p>
+        <div className="recent-item">
+          <h4>Last week</h4>
+          <Dial value={lastWeek} variant="purple" />
+        </div>
+
+      </div>
+
+      <p className="recent-diff">
+        {emphasize(capitalizedText)}
+        <br />
+        <span className={`diff-value ${diffClass}`}>{arrow} {difference}</span>
+      </p>
     </InfoSection>
   );
 }
