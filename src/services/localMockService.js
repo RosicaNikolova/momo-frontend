@@ -1,11 +1,5 @@
 import mockData from '../data/mock_dataset.json';
 
-/**
- * Local mock service that mimics the API services.
- * Each function returns a Promise that resolves to the same data shape
- * that the components expect from the remote API.
- */
-
 const resolveOrError = (data, metric, residentId, kind) => {
   if (!data) {
     console.warn(`No local ${kind} data for metric="${metric}", residentId="${residentId}". Available metrics:`, Object.keys(mockData[kind] || {}));

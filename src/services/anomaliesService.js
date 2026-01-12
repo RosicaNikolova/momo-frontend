@@ -12,13 +12,13 @@ export class AnomaliesService {
      * @throws {Error} If metric is invalid or API call fails
      */
     static async getAnomaliesData(metric, residentId) {
-        // Validate metric type
+        
         const validMetrics = Object.values(METRIC_TYPES);
         if (!validMetrics.includes(metric)) {
             throw new Error(`Invalid metric: ${metric}. Valid metrics are: ${validMetrics.join(', ')}`);
         }
 
-        // Validate resident ID
+        
         if (!residentId || isNaN(residentId)) {
             throw new Error('Invalid resident ID. Must be a valid number.');
         }
@@ -29,8 +29,6 @@ export class AnomaliesService {
             const data = await apiGet(endpoint);
             return data;
         } catch (error) {
-            // The axios interceptor already handles error formatting
-            // Just re-throw the error with additional context if needed
             if (error.message.includes('400') || error.message.includes('Invalid request')) {
                 throw new Error(`Invalid metric "${metric}" or resident ID "${residentId}". Please check your inputs.`);
             }

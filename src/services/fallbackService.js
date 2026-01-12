@@ -8,16 +8,12 @@ const safeCall = async (realFn, mockFn, metric, residentId, label) => {
     const res = await realFn(metric, residentId);
     return res;
   } catch (err) {
-    // Log and fallback to mock
-    // eslint-disable-next-line no-console
     console.warn(`${label} service failed, falling back to local mock:`, err && err.message ? err.message : err);
     try {
       return await mockFn(metric, residentId);
     } catch (mockErr) {
-      // If mock also fails, log it and return empty/default data to avoid white screen
-      // eslint-disable-next-line no-console
       console.error(`${label} mock data also failed:`, mockErr && mockErr.message ? mockErr.message : mockErr);
-      // Return a minimal default structure to prevent white screen
+      
       return getDefaultData(label, metric, residentId);
     }
   }
