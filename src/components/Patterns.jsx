@@ -7,7 +7,7 @@ export default function Patterns({ events, baseline }) {
     if (!timeStr) return 0;
     if (typeof timeStr !== 'string') return 0;
 
-
+    // Handle "Xh Ymin" format
     let match = timeStr.match(/(\d+)h\s*(\d+)?min/);
     if (match) {
       const hours = parseInt(match[1]) || 0;
@@ -15,7 +15,14 @@ export default function Patterns({ events, baseline }) {
       return hours + mins / 60;
     }
 
+    // Handle "Xmin" format (minutes only)
+    match = timeStr.match(/(\d+)min/);
+    if (match) {
+      const mins = parseInt(match[1]) || 0;
+      return mins / 60;
+    }
 
+    // Handle "Xh" format (hours only)
     match = timeStr.match(/(\d+(?:\.\d+)?)\s*h/);
     if (match) {
       return parseFloat(match[1]) || 0;
@@ -29,9 +36,9 @@ export default function Patterns({ events, baseline }) {
     const anomalyHours = timeToHours(anomalyValue);
     const diff = anomalyHours - baselineHours;
 
-    if (diff < 0) return "lower";
-    if (diff <= 2) return "medium-high";
-    return "high";
+    if (diff > 0) return "higher"; // Orange for higher than baseline
+    if (diff < 0) return "lower";  // Blue for lower than baseline
+    return ""; // No color if equal
   };
 
   const formatDate = (isoDate) => {
@@ -67,7 +74,8 @@ export default function Patterns({ events, baseline }) {
               <div className="timeline-content">
                 {evt.type === "shift" ? (
                   <strong title={evt.date}>
-                    {formatDate(evt.date)} : Pattern Changed - {evt.value || '—'}
+                    {formatDate(evt.date)} : Baseline Changed to
+                    <span className={`anomaly-value ${getAnomalyColor(evt.value)}`}>{evt.value || '—'}</span>
                   </strong>
                 ) : (
                   <span title={evt.date}>

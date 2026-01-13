@@ -124,15 +124,15 @@
 }
 
 .anomaly-value.lower {
-  color: #86D0E8;
+  color: #4A90E2;
+  /* Blue for lower than baseline */
+  font-weight: 600;
 }
 
-.anomaly-value.medium-high {
-  color: #E4AD36;
-}
-
-.anomaly-value.high {
-  color: #d32f2f;
+.anomaly-value.higher {
+  color: #FF8C42;
+  /* Orange for higher than baseline */
+  font-weight: 600;
 }
 
 /* Mobile Responsiveness */
