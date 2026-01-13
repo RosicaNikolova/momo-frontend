@@ -23,9 +23,8 @@
     flex-wrap: wrap;
 }
 
-/* Resident Header Styles */
 .resident-header {
-    background: linear-gradient(135deg, #08B4DA 0%, #4abed6 50%, #b896cf 100%);
+  background: linear-gradient(90deg, #08B4DA 0%, #08B4DA 50%, #b84ecb 100%);
     padding: 1.25rem 2rem 1rem 2rem;
     border-radius: 0;
     margin: 0 0 1.5rem 0;

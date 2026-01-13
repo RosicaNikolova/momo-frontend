@@ -9,6 +9,7 @@ function Sidebar() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const location = useLocation();
+    const isHome = location.pathname === '/';
 
     useEffect(() => {
         loadResidents();
@@ -34,26 +35,21 @@ function Sidebar() {
 
     return (
         <>
-            {/* Toggle Button */}
-            <button
-                className="sidebar-toggle"
-                onClick={toggleSidebar}
-                aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
-            >
-                {isOpen ? '✕' : '☰'}
-            </button>
+            
+            {!isHome && (
+                <button
+                    className="sidebar-toggle"
+                    onClick={toggleSidebar}
+                    aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
+                >
+                    {isOpen ? '✕' : '☰'}
+                </button>
+            )}
 
-            {/* Sidebar */}
+            
             <div className={`sidebar ${isOpen ? 'sidebar--open' : ''}`}>
                 <div className="sidebar__header">
                     <h2 className="sidebar__title">Residents</h2>
-                    <button
-                        className="sidebar__close"
-                        onClick={toggleSidebar}
-                        aria-label="Close sidebar"
-                    >
-                        ✕
-                    </button>
                 </div>
 
                 <div className="sidebar__content">
@@ -91,7 +87,7 @@ function Sidebar() {
                 </div>
             </div>
 
-            {/* Overlay */}
+            
             {isOpen && (
                 <div
                     className="sidebar-overlay"
