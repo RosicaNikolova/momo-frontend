@@ -18,6 +18,7 @@
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(10px);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .sidebar-toggle:hover {
@@ -27,6 +28,16 @@
 
 .sidebar-toggle:active {
     transform: translateY(0);
+}
+
+.sidebar-toggle:focus,
+.sidebar-toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-toggle::-moz-focus-inner {
+    border: 0;
 }
 
 .sidebar {
@@ -62,7 +73,7 @@
     margin: 0;
     font-size: 20px;
     font-weight: 700;
-    color: #667eea;
+    color: #b84ecb;
 }
 
 .sidebar__close {
@@ -123,13 +134,12 @@
 }
 
 .sidebar__link:hover {
-    background: #f8fafc;
+    background: #faeffc;
     padding-left: 28px;
 }
 
 .sidebar__link--active {
-    background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.05) 100%);
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #b84ecb;
     padding-left: 20px;
 }
 
@@ -140,21 +150,21 @@
 .sidebar__room {
     font-weight: 600;
     font-size: 16px;
-    color: #667eea;
+    color: #d16edd;
     margin-bottom: 4px;
 }
 
 .sidebar__name {
     font-size: 14px;
-    color: #64748b;
+    color: #616161;
 }
 
 .sidebar__link--active .sidebar__room {
-    color: #764ba2;
+    color: #b84ecb;
 }
 
 .sidebar__link--active .sidebar__name {
-    color: #1e293b;
+    color: #000;
 }
 
 .sidebar-overlay {

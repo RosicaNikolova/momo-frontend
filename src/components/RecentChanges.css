@@ -9,7 +9,7 @@
 
 .recent-item h4 {
   margin-bottom: 0.4rem;
-  color: #333;
+  color: #000000;
   font-size: 1.05rem;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .dial-black {
-  color: #111;
+  color: #000000;
 }
 
 .dial-purple {
@@ -123,11 +123,11 @@
 }
 
 .diff-value.up {
-  color: #ff8c42;
+  color: #000000;
 }
 
 .diff-value.down {
-  color: #08B4DA;
+  color: #000000;
 }
 
 /* Mobile Responsiveness */

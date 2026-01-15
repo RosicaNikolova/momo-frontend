@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import "./Navigation.css";
 
 export default function Navigation({ room }) {
@@ -7,7 +8,9 @@ export default function Navigation({ room }) {
   return (
     <nav className="nav">
       <div className="nav__top">
-        <h1 className="nav__logo">Momo Insights App</h1>
+        <h1 className="nav__logo">
+          <Link to="/" className="nav__logo-link">Momo Insights</Link>
+        </h1>
 
       </div>
 
